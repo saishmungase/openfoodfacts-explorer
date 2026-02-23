@@ -66,7 +66,9 @@
 	}
 </script>
 
-<div class="border-accent bg-accent/10 rounded border-s p-4">
+<div
+	class={[element.action_element.html != '' && 'border-accent bg-accent/10 rounded border-s p-4']}
+>
 	{#if element.action_element.html != ''}
 		<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 		<div class="mb-4 text-sm">
