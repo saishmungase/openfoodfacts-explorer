@@ -35,7 +35,7 @@
 		'sodium'
 	];
 	const EMPTY_NUTRIENT_TOOLTIPS: Record<string, string> = {
-		fibers: 'Enter a hyphen (-) if the value is not present on the packaging.'
+		fibers: 'product.edit.tooltips.empty_fiber'
 	};
 
 	let showInfo = $state(false);
@@ -253,8 +253,8 @@
 							<span class="flex grow items-center gap-2">
 								{$_(`product.edit.nutrient.${nutrient}`)}
 
-								{#if EMPTY_NUTRIENT_TOOLTIPS[nutrient] && product.nutriments?.[nutrient] == null}
-									<InfoTooltip text={EMPTY_NUTRIENT_TOOLTIPS[nutrient]} />
+								{#if EMPTY_NUTRIENT_TOOLTIPS[nutrient] && (product.nutriments?.[nutrient] === undefined || product.nutriments?.[nutrient] === null || (product.nutriments?.[nutrient] as unknown) === '')}
+									<InfoTooltip text={$_(EMPTY_NUTRIENT_TOOLTIPS[nutrient])} />
 								{/if}
 							</span>
 							{#if issuesByField([nutrient, 'all']).length > 0}
